@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="226" pageHeight="560" columnWidth="201" leftMargin="14" rightMargin="11" topMargin="0" bottomMargin="0" uuid="2f4b9db1-2b3d-49f0-b54b-0abe3e097aaf">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="156"/>
+	<parameter name="id_pemesanan" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     temporary_pemesanan.`id_tmp` AS temporary_pemesanan_id_tmp,
+     temporary_pemesanan.`id_pemesanan` AS temporary_pemesanan_id_pemesanan,
+     temporary_pemesanan.`no_meja` AS temporary_pemesanan_no_meja,
+     temporary_pemesanan.`id_menu` AS temporary_pemesanan_id_menu,
+     temporary_pemesanan.`namamenu` AS temporary_pemesanan_namamenu,
+     temporary_pemesanan.`hargasatuan` AS temporary_pemesanan_hargasatuan,
+     temporary_pemesanan.`jumlahpesan` AS temporary_pemesanan_jumlahpesan,
+     temporary_pemesanan.`subtotal` AS temporary_pemesanan_subtotal,
+     temporary_pemesanan.`id_tenant` AS temporary_pemesanan_id_tenant,
+     temporary_pemesanan.`namatenant` AS temporary_pemesanan_namatenant,
+     temporary_pemesanan.`bayar` AS temporary_pemesanan_bayar,
+     temporary_pemesanan.`kembalian` AS temporary_pemesanan_kembalian
+FROM
+     `temporary_pemesanan` temporary_pemesanan
+WHERE
+     temporary_pemesanan.`id_pemesanan` LIKE '%$P!{id_pemesanan}%']]>
+	</queryString>
+	<field name="temporary_pemesanan_id_tmp" class="java.lang.Integer"/>
+	<field name="temporary_pemesanan_id_pemesanan" class="java.lang.String"/>
+	<field name="temporary_pemesanan_no_meja" class="java.lang.String"/>
+	<field name="temporary_pemesanan_id_menu" class="java.lang.String"/>
+	<field name="temporary_pemesanan_namamenu" class="java.lang.String"/>
+	<field name="temporary_pemesanan_hargasatuan" class="java.lang.Double"/>
+	<field name="temporary_pemesanan_jumlahpesan" class="java.lang.Double"/>
+	<field name="temporary_pemesanan_subtotal" class="java.lang.Double"/>
+	<field name="temporary_pemesanan_id_tenant" class="java.lang.String"/>
+	<field name="temporary_pemesanan_namatenant" class="java.lang.String"/>
+	<field name="temporary_pemesanan_bayar" class="java.lang.Double"/>
+	<field name="temporary_pemesanan_kembalian" class="java.lang.Double"/>
+	<variable name="temporary_pemesanan_total_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{temporary_pemesanan_subtotal}]]></variableExpression>
+	</variable>
+	<group name="temporary_pemesanan_id_pemesanan">
+		<groupExpression><![CDATA[$F{temporary_pemesanan_id_pemesanan}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f990c72c-4955-4d78-a315-1df8cf6afaa2" x="0" y="0" width="201" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KEDAI AVICENNA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5f3d035-78c7-4a59-aef2-842625292adf" x="0" y="19" width="201" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Jl. Raya Tengah No.4, RT.2/RW.3, Gedong, Kec. Ps. Rebo Kota Jak-Tim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23d89cd1-db84-486b-9d23-09dcda4f0005" x="0" y="45" width="201" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ DKI Jakarta 13760 Telp (081388726965)]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b3ea39cd-055e-4fc5-9d3d-ff07e299521a" x="0" y="64" width="201" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="31" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="8312e003-7cc2-4c85-b25c-84524d7dd866" x="92" y="0" width="109" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c18f926e-99ef-4195-a46c-3782102db72c" x="25" y="0" width="67" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{temporary_pemesanan_id_pemesanan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e5e82521-c7db-4362-94d5-cd8dc10ee227" x="4" y="0" width="21" height="15"/>
+				<textElement/>
+				<text><![CDATA[ID :]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="eeafd723-e950-456d-8653-fcd8bcb195d8" x="0" y="15" width="201" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d9bdc74b-19ab-4509-89f9-74ec0ded9e5a" x="0" y="0" width="111" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Menu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bc8a8f01-43da-4aba-968d-c95cdd7bd6f1" x="111" y="2" width="26" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="883bd179-af0b-4d67-b8d4-6398129fff42" x="137" y="2" width="64" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="fcfab8f1-3876-4ec3-a984-38bead4ec208" x="0" y="0" width="111" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{temporary_pemesanan_namamenu}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement uuid="cbaa4d7b-f449-489a-b737-3faa1c9d8ad3" x="111" y="0" width="26" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{temporary_pemesanan_jumlahpesan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="d5fe1af9-41e0-4333-b5cf-2201ca75af1b" x="147" y="0" width="54" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{temporary_pemesanan_hargasatuan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="75" splitType="Stretch">
+			<textField pattern="¤ #,##0">
+				<reportElement uuid="96ca17b5-4305-432d-bd2a-6831e35ada69" x="137" y="55" width="64" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{temporary_pemesanan_kembalian}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fdef7787-a516-4f84-8a9c-b8990c75ac9a" x="85" y="55" width="52" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Kembali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f8de2480-0860-4007-9a64-5167e9ecfc24" x="85" y="35" width="52" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Bayar]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0">
+				<reportElement uuid="32267124-e6e3-43df-8ec6-870a66dc96e8" x="137" y="15" width="64" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{temporary_pemesanan_total_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ee14d2ad-07a0-442f-b4e4-29c7d9f67c6a" x="85" y="15" width="52" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0037753d-719e-4350-8079-e36cf774e82e" x="0" y="10" width="201" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField pattern="¤ #,##0">
+				<reportElement uuid="9105d7db-242b-4e3d-94e1-591c2642dc12" x="137" y="35" width="64" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{temporary_pemesanan_bayar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

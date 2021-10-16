@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f439fdc-a4fd-41f3-bc2d-1c44a2f8fe7b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="defaultValue" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer("1")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tgl1" class="java.util.Date"/>
+	<parameter name="tgl2" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     rekapitulasi_harian.`id_rekapharian` AS rekapitulasi_harian_id_rekapharian,
+     rekapitulasi_harian.`tanggal` AS rekapitulasi_harian_tanggal,
+     rekapitulasi_harian.`id_tenant` AS rekapitulasi_harian_id_tenant,
+     rekapitulasi_harian.`namatenant` AS rekapitulasi_harian_namatenant,
+     rekapitulasi_harian.`pendapatankotor` AS rekapitulasi_harian_pendapatankotor
+FROM
+     `rekapitulasi_harian` rekapitulasi_harian
+WHERE
+     rekapitulasi_harian.`tanggal` BETWEEN $P{tgl1}and$P{tgl2}]]>
+	</queryString>
+	<field name="rekapitulasi_harian_id_rekapharian" class="java.lang.Integer"/>
+	<field name="rekapitulasi_harian_tanggal" class="java.sql.Date"/>
+	<field name="rekapitulasi_harian_id_tenant" class="java.lang.String"/>
+	<field name="rekapitulasi_harian_namatenant" class="java.lang.String"/>
+	<field name="rekapitulasi_harian_pendapatankotor" class="java.lang.Double"/>
+	<variable name="noUrut" class="java.lang.Integer" resetType="None" calculation="Count">
+		<variableExpression><![CDATA[$V{noUrut}]]></variableExpression>
+	</variable>
+	<variable name="rekapitulasi_harian_pendapatankotor_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rekapitulasi_harian_pendapatankotor}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="22b7e645-ab19-4b7e-afe5-3d48010d0362" x="253" y="0" width="407" height="58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="40" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KEDAI AVICENNA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="459ad62c-df86-416b-9bad-a43352ef5edd" x="253" y="74" width="407" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ Daerah Khusus Ibokota Jakarta 13760 Telp (081388726965)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="492b3dbf-fe79-4e63-b596-c35ce858ea67" x="253" y="58" width="407" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Tengah No.4, RT.2/RW.3, Gedong, Kec. Ps. Rebo Kota Jakarta Timur, ]]></text>
+			</staticText>
+			<image isLazy="true" onErrorType="Blank">
+				<reportElement uuid="1206a4d7-9267-48cf-83ec-463641945d69" x="139" y="0" width="114" height="111"/>
+				<imageExpression><![CDATA["src\\report\\logo.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="706db721-6d6a-4419-bc97-c547d95a3032" x="55" y="111" width="693" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="706db721-6d6a-4419-bc97-c547d95a3032" x="55" y="115" width="693" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e8844088-8ee2-4f86-b36d-f7123966e6d3" x="200" y="2" width="423" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN REKAPITULASI PER HARI]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="6bed8a80-b0fc-4768-88f6-5ec6c317c4f7" x="48" y="19" width="40" height="22"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4f31a8c4-148c-4484-b997-650230c27747" x="88" y="19" width="137" height="22"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="4f31a8c4-148c-4484-b997-650230c27747" x="225" y="19" width="88" height="22"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="a557abb6-c35d-4537-b03f-f56a1a3c9ef6" x="230" y="21" width="76" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Tenant]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="4f31a8c4-148c-4484-b997-650230c27747" x="609" y="19" width="152" height="22"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="bc538930-a0f4-4e49-94da-66bed8ac4ebc" x="622" y="21" width="125" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pendapatan Kotor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56fe065f-75fe-4fd4-b069-539ca8c529f6" x="98" y="21" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="4f31a8c4-148c-4484-b997-650230c27747" x="313" y="19" width="296" height="22"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="f65fa323-704f-4438-9e5a-b55c17c5ea31" x="323" y="21" width="272" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Tenant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b09c8d4-18b7-46d6-8ed8-2b17ca1be998" x="51" y="21" width="34" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="dae39520-d120-4536-bb8a-68b7711765a5" x="609" y="0" width="152" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="dae39520-d120-4536-bb8a-68b7711765a5" x="225" y="0" width="88" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="dae39520-d120-4536-bb8a-68b7711765a5" x="88" y="0" width="137" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="dae39520-d120-4536-bb8a-68b7711765a5" x="48" y="0" width="40" height="20"/>
+			</rectangle>
+			<textField pattern="#,##0">
+				<reportElement uuid="b96e8b9b-7394-4921-a08a-b0c216068533" x="623" y="0" width="124" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rekapitulasi_harian_pendapatankotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b3efc512-1e81-4a15-8505-833d643735c1" x="230" y="0" width="76" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rekapitulasi_harian_id_tenant}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="dae39520-d120-4536-bb8a-68b7711765a5" x="313" y="0" width="296" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="abe199ac-8d29-402e-996b-c741e75db65c" x="323" y="0" width="272" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rekapitulasi_harian_namatenant}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="4c56095e-60e7-45d2-8bc6-7a45e675e136" x="98" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rekapitulasi_harian_tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="150b9c60-fad9-4f38-8c9a-44ae11fb0c19" x="51" y="0" width="34" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer($V{noUrut}.intValue() + $P{defaultValue}.intValue())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ac37ee1e-b73e-4e34-b4ac-45075b81d6fb" x="514" y="16" width="129" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Total Pendapatan Kotor:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="da2cf406-f342-4932-be02-90781c1eb267" x="673" y="16" width="94" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{rekapitulasi_harian_pendapatankotor_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ac37ee1e-b73e-4e34-b4ac-45075b81d6fb" x="623" y="74" width="56" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Pemilik]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac37ee1e-b73e-4e34-b4ac-45075b81d6fb" x="595" y="117" width="116" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Avi Cenna Isnaini]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac37ee1e-b73e-4e34-b4ac-45075b81d6fb" x="652" y="16" width="21" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Rp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac37ee1e-b73e-4e34-b4ac-45075b81d6fb" x="548" y="54" width="56" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="5e0765e0-5b3b-48dc-af71-98ae954b1bd1" x="609" y="54" width="165" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMM yyyy", new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
